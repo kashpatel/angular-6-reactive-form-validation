@@ -1,0 +1,55 @@
+<!-- main app container -->
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h3>Angular 6 Reactive Form Validation</h3>
+                <form [formGroup]="registerForm" #ngForm="ngForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': matcher(registerForm.get('firstName'), ngForm) }" />
+                        <div *ngIf="matcher(registerForm.get('firstName'), ngForm)" class="invalid-feedback">
+                            <div *ngIf="ngForm.hasError('required', 'firstName')">First Name is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': matcher(registerForm.get('lastName'), ngForm) }" />
+                        <div *ngIf="matcher(registerForm.get('lastName'), ngForm)" class="invalid-feedback">
+                            <div *ngIf="ngForm.hasError('required', 'lastName')">Last Name is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': matcher(registerForm.get('email'), ngForm) }" />
+                        <div *ngIf="matcher(registerForm.get('email'), ngForm)" class="invalid-feedback">
+                            <div *ngIf="ngForm.hasError('required', 'email')">Email is required</div>
+                            <div *ngIf="ngForm.hasError('email', 'email')">Email must be a valid email address</div>
+                        </div> 
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': matcher(registerForm.get('password'), ngForm) }" />
+                        <div *ngIf="matcher(registerForm.get('password'), ngForm)" class="invalid-feedback">
+                            <div *ngIf="ngForm.hasError('required', 'password')">Password is required</div>
+                            <div *ngIf="ngForm.hasError('minlength', 'password')">Password must be at least 6 characters</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- credits -->
+<div class="text-center">
+    <p>
+        <a href="http://jasonwatmore.com/post/2018/05/10/angular-6-reactive-forms-validation-example" target="_top">Angular 6 - Reactive Forms Validation Example</a>
+    </p>
+    <p>
+        <a href="http://jasonwatmore.com" target="_top">JasonWatmore.com</a>
+    </p>
+</div>
